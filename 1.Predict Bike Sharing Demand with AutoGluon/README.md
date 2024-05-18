@@ -40,13 +40,19 @@ Using Exploratory Data Analysis (EDA) and Creating an additional feature
 
 ##  Model three
 Hyper parameter optimization
-- num_bag_folds=3 
-- num_bag_sets=3
-- num_stack_levels=3
-- hyperparameters='default'
-- hyperparameter_tune_kwargs="random"
+- num_bag_folds
+  - Number of folds used for bagging of models. When num_bag_folds = k, training time is roughly increased by a factor of k
+  - Increasing num_bag_folds will result in models with lower bias but that are more prone to overfitting
+  - To improve predictions, avoid increasing num_bag_folds much beyond 10
+- num_bag_sets
+   - Number of repeats of kfold bagging to perform
+   - Values greater than 1 will result in superior predictive performance
+- num_stack_levels
+   - Number of stacking levels to use in stack ensemble
+   - Recommend values between 1-3 to maximize predictive performance.
 - WeightedEnsemble_L2: is the best model
 ## Reference
 
-[AutoGluon](https://towardsdatascience.com/autogluon-deep-learning-automl-5cdb4e2388ec#:~:text=AutoGluon%20enables%20you%20to%20automatically,supervised%20learning%20with%20tabular%20datasets.)
+[AutoGluon TabularPrediction](https://towardsdatascience.com/autogluon-deep-learning-automl-5cdb4e2388ec#:~:text=AutoGluon%20enables%20you%20to%20automatically,supervised%20learning%20with%20tabular%20datasets.)
 
+[AutoGluon](https://auto.gluon.ai/stable/api/autogluon.tabular.TabularPredictor.fit.html.)
